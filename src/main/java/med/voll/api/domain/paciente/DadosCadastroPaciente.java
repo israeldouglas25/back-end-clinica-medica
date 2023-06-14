@@ -13,7 +13,7 @@ public record DadosCadastroPaciente(
         String email,
         @NotBlank
         String telefone,
-        @NotBlank
+        @NotBlank(message = "CPF não pode ser branco ou vazio!")
         @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}")
         String cpf,
         DadosEndereco endereco) {
