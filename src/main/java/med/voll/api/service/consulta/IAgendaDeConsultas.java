@@ -1,0 +1,10 @@
+package med.voll.api.service.consulta;
+
+import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
+import med.voll.api.domain.consulta.DadosCancelamentoConsulta;
+import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
+
+public interface IAgendaDeConsultas {
+    DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados);
+    void cancelar(DadosCancelamentoConsulta dados);
+}
