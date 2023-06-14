@@ -2,6 +2,7 @@ package med.voll.api.service.medico;
 
 import med.voll.api.domain.medico.*;
 import med.voll.api.domain.repository.MedicoRepository;
+import med.voll.api.infra.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,9 @@ public class MedicoService implements IMedicoService {
     }
 
     public void delete(Long id) {
+        if (!medicoRepository.existsById(id)){
+            throw new ValidacaoException("ID invalido!");
+        }
         var medico = medicoRepository.getReferenceById(id);
         medico.excluir();
     }
