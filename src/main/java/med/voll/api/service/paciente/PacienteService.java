@@ -46,4 +46,12 @@ public class PacienteService implements IPacienteService {
         var paciente = pacienteRepository.getReferenceById(id);
         return new DadosDetalhesPaciente(paciente);
     }
+
+    public boolean existsById(Long id){
+        return pacienteRepository.existsById(id);
+    }
+
+    public Paciente getPacienteById(Long id){
+        return pacienteRepository.getReferenceById(id);
+    }
 }

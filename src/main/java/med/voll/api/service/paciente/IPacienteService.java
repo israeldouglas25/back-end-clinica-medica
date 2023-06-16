@@ -1,9 +1,6 @@
 package med.voll.api.service.paciente;
 
-import med.voll.api.domain.paciente.DadosAtualizarPaciente;
-import med.voll.api.domain.paciente.DadosCadastroPaciente;
-import med.voll.api.domain.paciente.DadosDetalhesPaciente;
-import med.voll.api.domain.paciente.DadosListarPaciente;
+import med.voll.api.domain.paciente.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,4 +18,8 @@ public interface IPacienteService {
     DadosDetalhesPaciente getById(Long id);
 
     void delete(Long id);
+
+    boolean existsById(Long id);
+
+    Paciente getPacienteById(Long id);
 }
