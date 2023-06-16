@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class MedicoService implements IMedicoService {
     @Autowired
@@ -39,5 +41,17 @@ public class MedicoService implements IMedicoService {
     public DadosDetalhesMedico getById(Long id) {
         var medico = medicoRepository.getReferenceById(id);
         return new DadosDetalhesMedico(medico);
+    }
+
+    public boolean existsById(Long id){
+        return medicoRepository.existsById(id);
+    }
+
+    public Medico getMedicoById(Long id){
+        return medicoRepository.getReferenceById(id);
+    }
+
+    public Medico medicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data){
+        return medicoRepository.medicoAleatorioLivreNaData(especialidade, data);
     }
 }

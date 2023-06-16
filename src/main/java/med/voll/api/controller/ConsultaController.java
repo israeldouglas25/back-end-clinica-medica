@@ -19,8 +19,7 @@ public class ConsultaController {
     @PostMapping
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) {
-        var dto = agenda.agendar(dados);
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(agenda.agendar(dados));
     }
 
     @DeleteMapping
@@ -28,5 +27,10 @@ public class ConsultaController {
     public ResponseEntity cancelar(@RequestBody @Valid DadosCancelamentoConsulta dados) {
         agenda.cancelar(dados);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity listar(){
+        return ResponseEntity.ok(agenda.getAll());
     }
 }

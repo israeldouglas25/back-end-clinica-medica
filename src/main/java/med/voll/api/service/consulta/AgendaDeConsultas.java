@@ -8,8 +8,8 @@ import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
 import med.voll.api.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.repository.ConsultaRepository;
-import med.voll.api.domain.repository.MedicoRepository;
 import med.voll.api.domain.repository.PacienteRepository;
+import med.voll.api.service.medico.IMedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class AgendaDeConsultas implements IAgendaDeConsultas {
     @Autowired
     private ConsultaRepository consultaRepository;
     @Autowired
-    private MedicoRepository medicoRepository;
+    private IMedicoService iMedicoService;
     @Autowired
     private PacienteRepository pacienteRepository;
 
@@ -31,7 +31,7 @@ public class AgendaDeConsultas implements IAgendaDeConsultas {
         if (!pacienteRepository.existsById(dados.idPaciente())) {
             throw new ValidacaoException("ID do paciente não existe!");
         }
-        if (dados.idMedico() != null && !medicoRepository.existsById(dados.idMedico())) {
+        if (dados.idMedico() != null && !iMedicoService.existsById(dados.idMedico())) {
             throw new ValidacaoException("ID do medico não existe!");
         }
 
@@ -56,15 +56,19 @@ public class AgendaDeConsultas implements IAgendaDeConsultas {
         consulta.cancelar(dados.motivo());
     }
 
+    public List<DadosDetalhamentoConsulta> getAll(){
+        return consultaRepository.findAll().stream().map(DadosDetalhamentoConsulta::new).toList();
+    }
+
     private Medico escolherMedico(DadosAgendamentoConsulta dados) {
         if (dados.idMedico() != null) {
-            return medicoRepository.getReferenceById(dados.idMedico());
+            return iMedicoService.getMedicoById(dados.idMedico());
         }
 
         if (dados.especialidade() == null) {
             throw new ValidacaoException("Especialidade não especificada!");
         }
 
-        return medicoRepository.medicoAleatorioLivreNaData(dados.especialidade(), dados.data());
+        return iMedicoService.medicoAleatorioLivreNaData(dados.especialidade(), dados.data());
     }
 }

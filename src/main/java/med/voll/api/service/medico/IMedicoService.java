@@ -1,11 +1,10 @@
 package med.voll.api.service.medico;
 
-import med.voll.api.domain.medico.DadosAtualizarMedico;
-import med.voll.api.domain.medico.DadosCadastroMedico;
-import med.voll.api.domain.medico.DadosDetalhesMedico;
-import med.voll.api.domain.medico.DadosListarMedico;
+import med.voll.api.domain.medico.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.time.LocalDateTime;
 
 public interface IMedicoService {
     DadosDetalhesMedico create(DadosCadastroMedico dados);
@@ -17,4 +16,10 @@ public interface IMedicoService {
     DadosDetalhesMedico getById(Long id);
 
     void delete(Long id);
+
+    boolean existsById(Long id);
+
+    Medico getMedicoById(Long id);
+
+    Medico medicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data);
 }
