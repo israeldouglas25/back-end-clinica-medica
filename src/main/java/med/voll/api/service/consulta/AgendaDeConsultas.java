@@ -1,11 +1,12 @@
 package med.voll.api.service.consulta;
 
+import med.voll.api.domain.consulta.validacoes.cancelamento.ValidadorCancelamentoDeConsulta;
 import med.voll.api.infra.exception.ValidacaoException;
 import med.voll.api.domain.consulta.Consulta;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import med.voll.api.domain.consulta.DadosCancelamentoConsulta;
 import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
-import med.voll.api.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
+import med.voll.api.domain.consulta.validacoes.agendamento.ValidadorAgendamentoDeConsulta;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.repository.ConsultaRepository;
 import med.voll.api.service.medico.IMedicoService;
@@ -26,6 +27,9 @@ public class AgendaDeConsultas implements IAgendaDeConsultas {
 
     @Autowired
     private List<ValidadorAgendamentoDeConsulta> validadores;
+
+    @Autowired
+    private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
 
     public DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados) {
         if (!iPacienteService.existsById(dados.idPaciente())) {
@@ -52,12 +56,19 @@ public class AgendaDeConsultas implements IAgendaDeConsultas {
             throw new ValidacaoException("O ID da consulta não existe!");
         }
 
+        validadoresCancelamento.forEach(v -> v.validar(dados));
+
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
         consulta.cancelar(dados.motivo());
     }
 
     public List<DadosDetalhamentoConsulta> getAll() {
         return consultaRepository.findAll().stream().map(DadosDetalhamentoConsulta::new).toList();
+    }
+
+    public Consulta getById(Long id){
+        return consultaRepository.findById(id)
+                .orElseThrow(() -> new ValidacaoException("ID da consulta invalido ou não existe"));
     }
 
     private Medico escolherMedico(DadosAgendamentoConsulta dados) {
