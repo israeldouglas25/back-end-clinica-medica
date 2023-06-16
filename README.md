@@ -24,7 +24,7 @@ anotações específicas para recursos HTTPs;
 3. Do pacote DOMAIN foram criadas subclasses ENTITIES e REPOSITORY. A ENTITIES foram criados os requisitos e regras de negócios, já na REPOSITORY foi criado a 
 persistência, onde a classe estende a interface JpaRepository para utilização de recursos específicos como CRUD.
 4. No pacote SERVICE foi criada a configuração para requisições, retornos e interface implementada para retorno da CONTROLLER.
-5. A documentação foi criada com SWAGGER 3, onde foi aplicada apenas às dependências do SWAGGER 3 no pom.xml para descrever a API RESTFul usando JSON.
+5. A documentação foi criada com SWAGGER 3, onde foi aplicada apenas às dependências do SPRING DOC no pom.xml para descrever a API RESTFul usando JSON.
 
 ## 📦 Para executar o projeto
 
