@@ -30,7 +30,7 @@ public class ConsultaController {
     }
 
     @GetMapping
-    public ResponseEntity listar(){
+    public ResponseEntity listar() {
         return ResponseEntity.ok(agenda.getAll());
     }
 }

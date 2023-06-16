@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IAgendaDeConsultas {
     DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados);
+
     void cancelar(DadosCancelamentoConsulta dados);
 
     List<DadosDetalhamentoConsulta> getAll();

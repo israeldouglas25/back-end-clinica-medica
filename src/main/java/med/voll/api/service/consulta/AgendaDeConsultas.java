@@ -56,7 +56,7 @@ public class AgendaDeConsultas implements IAgendaDeConsultas {
         consulta.cancelar(dados.motivo());
     }
 
-    public List<DadosDetalhamentoConsulta> getAll(){
+    public List<DadosDetalhamentoConsulta> getAll() {
         return consultaRepository.findAll().stream().map(DadosDetalhamentoConsulta::new).toList();
     }
 

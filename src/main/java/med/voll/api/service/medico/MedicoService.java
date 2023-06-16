@@ -31,7 +31,7 @@ public class MedicoService implements IMedicoService {
     }
 
     public void delete(Long id) {
-        if (!medicoRepository.existsById(id)){
+        if (!medicoRepository.existsById(id)) {
             throw new ValidacaoException("ID invalido!");
         }
         var medico = medicoRepository.getReferenceById(id);
@@ -43,15 +43,15 @@ public class MedicoService implements IMedicoService {
         return new DadosDetalhesMedico(medico);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return medicoRepository.existsById(id);
     }
 
-    public Medico getMedicoById(Long id){
+    public Medico getMedicoById(Long id) {
         return medicoRepository.getReferenceById(id);
     }
 
-    public Medico medicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data){
+    public Medico medicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data) {
         return medicoRepository.medicoAleatorioLivreNaData(especialidade, data);
     }
 }
