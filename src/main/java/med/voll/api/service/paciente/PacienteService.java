@@ -47,11 +47,11 @@ public class PacienteService implements IPacienteService {
         return new DadosDetalhesPaciente(paciente);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return pacienteRepository.existsById(id);
     }
 
-    public Paciente getPacienteById(Long id){
+    public Paciente getPacienteById(Long id) {
         return pacienteRepository.getReferenceById(id);
     }
 }
