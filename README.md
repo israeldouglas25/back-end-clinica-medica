@@ -10,7 +10,7 @@ pré-estabelecidas no Trello documentação será utilizado o Swagger .
 | :rocket: URL         | https://github.com/israeldouglas25/back-end-clinica-medica
 | :fire: Desafio     | https://trello.com/b/SDBSgoLb/api-voll-med
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev)
+![](https://github.com/israeldouglas25/back-end-clinica-medica/blob/main/Captura%20de%20tela%202023-06-23%20163811.png#vitrinedev)
 
 ## Detalhes do projeto
 
