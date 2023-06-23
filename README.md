@@ -12,10 +12,6 @@ pré-estabelecidas no Trello documentação será utilizado o Swagger .
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](https://github.com/israeldouglas25/back-end-clinica-medica/blob/main/Captura%20de%20tela%202023-06-23%20163811.png#vitrinedev)
 
-## Detalhes do projeto
-
-Textos e imagens que descrevam seu projeto, suas conquistas, seus desafios, próximos passos, etc...
-
 ## 🛑 Pré-Requisitos / Dependências
 ✅ Java JDK 17 </br >
 ✅ IDE para desenvolvimento Java </br >
