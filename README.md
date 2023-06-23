@@ -6,7 +6,7 @@ pré-estabelecidas no Trello documentação será utilizado o Swagger .
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **API VollMed**
-| :label: Tecnologias | Java 17, Spring Boot, MySQL, JWT Token (tecnologias utilizadas)
+| :label: Tecnologias | Java 17, Spring Boot, MySQL, JWT Token
 | :rocket: URL         | https://github.com/israeldouglas25/back-end-clinica-medica
 | :fire: Desafio     | https://trello.com/b/SDBSgoLb/api-voll-med
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
