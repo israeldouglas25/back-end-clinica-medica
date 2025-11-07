@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.domain.endereco.Endereco;
+import med.voll.api.domain.usuario.Usuario;
 
 @Getter
 @EqualsAndHashCode(of = "id")
@@ -21,6 +22,7 @@ public class Paciente {
     private String email;
     private String telefone;
     private String cpf;
+    private String senha;
     @Embedded
     private Endereco endereco;
 
@@ -32,6 +34,7 @@ public class Paciente {
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.cpf = dados.cpf();
+        this.senha = "Senha salva com sucesso"; // A senha real é salva na tabela de usuários
         this.endereco = new Endereco(dados.endereco());
     }
 
