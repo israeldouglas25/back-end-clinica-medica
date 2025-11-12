@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.voll.api.domain.paciente.*;
 import med.voll.api.service.paciente.IPacienteService;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,7 +38,9 @@ public class PacienteController {
     }
 
     @GetMapping("/ativos")
-    public ResponseEntity<Page<DadosListarPaciente>> getAllAtivos(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable) {
+    public ResponseEntity<Page<DadosListarPaciente>> getAllAtivos(
+            @ParameterObject
+            @PageableDefault(size = 10, sort = {"nome"}) Pageable pageable) {
         return ResponseEntity.ok(service.getAllAtivos(pageable));
     }
 
