@@ -28,6 +28,9 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll();
                     req.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
+                    req.requestMatchers("/api/v1/pacientes/**").hasRole("ADMIN");
+                    req.requestMatchers("/api/v1/consultas/**").hasAnyRole("ADMIN", "MEDICO", "PACIENTE");
+                    req.requestMatchers("/api/v1/medicos/**").hasAnyRole("ADMIN", "MEDICO");
                     req.anyRequest().authenticated();
                 })
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
