@@ -1,0 +1,1 @@
+alter table medicos add senha varchar(255);

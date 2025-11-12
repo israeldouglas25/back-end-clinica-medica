@@ -18,6 +18,8 @@ public record DadosCadastroMedico(
         @NotBlank
         @Pattern(regexp = "\\d{4,6}")
         String crm,
+        @NotBlank(message = "Senha não pode ser branca ou vazia!")
+        String senha,
         @NotNull
         Especialidade especialidade,
         @NotNull

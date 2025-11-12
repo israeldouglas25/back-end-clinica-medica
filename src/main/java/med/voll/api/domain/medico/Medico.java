@@ -21,6 +21,7 @@ public class Medico {
     private String email;
     private String telefone;
     private String crm;
+    private String senha;
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
     @Embedded
@@ -33,6 +34,7 @@ public class Medico {
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.crm = dados.crm();
+        this.senha = "Senha salva com sucesso"; // A senha real é salva na tabela de usuários
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
     }

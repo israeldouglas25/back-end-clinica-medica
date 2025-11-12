@@ -2,10 +2,14 @@ package med.voll.api.service.medico;
 
 import med.voll.api.domain.medico.*;
 import med.voll.api.domain.repository.MedicoRepository;
+import med.voll.api.domain.repository.UsuarioRepository;
+import med.voll.api.domain.usuario.Role;
+import med.voll.api.domain.usuario.Usuario;
 import med.voll.api.infra.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,7 +19,16 @@ public class MedicoService implements IMedicoService {
     @Autowired
     private MedicoRepository medicoRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public DadosDetalhesMedico create(DadosCadastroMedico dados) {
+        // Hash da senha
+        String encoded = passwordEncoder.encode(dados.senha());
+        usuarioRepository.save(new Usuario(null, dados.email(), encoded, Role.ROLE_MEDICO));
         var medico = new Medico(dados);
         return new DadosDetalhesMedico(medicoRepository.save(medico));
     }
