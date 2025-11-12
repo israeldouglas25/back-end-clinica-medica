@@ -1,6 +1,7 @@
 package med.voll.api.service.paciente;
 
 import med.voll.api.domain.repository.UsuarioRepository;
+import med.voll.api.domain.usuario.Role;
 import med.voll.api.domain.usuario.Usuario;
 import med.voll.api.infra.exception.ValidacaoException;
 import med.voll.api.domain.paciente.*;
@@ -27,7 +28,7 @@ public class PacienteService implements IPacienteService {
     public DadosDetalhesPaciente create(DadosCadastroPaciente dados) {
         // Hash da senha
         String encoded = passwordEncoder.encode(dados.senha());
-        usuarioRepository.save(new Usuario(null, dados.email(), encoded));
+        usuarioRepository.save(new Usuario(null, dados.email(), encoded, Role.ROLE_PACIENTE));
         var paciente = new Paciente(dados);
 
         return new DadosDetalhesPaciente(pacienteRepository.save(paciente));
